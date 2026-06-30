@@ -49,9 +49,8 @@ pipeline {
 
         stage('Deploy to Tomcat') {
             steps {
-                echo 'Deploying WAR package to Apache Tomcat server...'
-                // Invokes the tomcat7:redeploy maven target to deploy on the configured Tomcat instance
-                bat 'mvn tomcat7:redeploy'
+                echo 'Deploying WAR package directly to Apache Tomcat webapps...'
+                bat 'copy /Y target\\EmployeeDirectoryPortal.war "%CATALINA_HOME%\\webapps\\"'
             }
         }
     }
