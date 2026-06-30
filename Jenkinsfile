@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    triggers {
+        // Automatically check GitHub for new commits every minute (ideal for local localhost setups)
+        pollSCM('* * * * *')
+    }
+
     tools {
         // Must match the name of the Maven installation in Jenkins Global Tool Configuration
         maven 'Maven 3'
